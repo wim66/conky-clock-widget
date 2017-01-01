@@ -1,0 +1,6 @@
+    # exclude everything except directory foo/bar
+    /*
+    !/conky-clock-widget
+    /conky-clock-widget/*
+    !/conky-clock-widget/bar
+
