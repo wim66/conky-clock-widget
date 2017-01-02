@@ -117,6 +117,12 @@ function conky_main_box()
         corners = { {"circle",92} },
 	},
 
+		-- top glare
+	{	draw_me=true,
+	x=384,y=41,w=116,h=116, 
+		colour= "custom3", linear_gradient= {62,0,62,124},
+        corners = { {"circle",62} },scale_y=0.5
+	},
 
 		-- inner radial
 	{	draw_me=true,
@@ -125,13 +131,18 @@ function conky_main_box()
         corners= { {"circle",92} },
 	},
 
-
-
-		-- top glare
+		-- inner border
 	{	draw_me=true,
-	x=384,y=38,w=116,h=116, 
-		colour= "custom3", linear_gradient= {62,0,62,124},
-        corners = { {"circle",62} },scale_y=0.5
+	x=355,y=41,w=174,h=174,
+		colour= { {0,0x000000,0.66}, {1,0x000000,0} }, radial_gradient= {87,87,87,87,87,82},
+        corners = { {"circle",86} },border=4,
+	},
+
+		--outer border
+	{	draw_me=true,
+	x=350,y=36,w=184,h=184,
+		colour= { {0,0x848484,1}, {1,0x34495E,1}, }, linear_gradient= {0,0,0,184},
+        corners = { {"circle",92} },border=8,
 	},
 
 
@@ -220,14 +231,14 @@ function draw_box(cr,t)
     end   
 
     --check values and set default values
-	if Clock_Face_Color == "green" then 	clock_face = { {0,0xB8FFF2,1}, {0.2,0x258574,0.75}, {1,0x154D43,0.8} }
-						clock_face2 = { {0,0xB8FFF2,0.8}, {1,0x000000,0} }
-						clock_face3 = { {0,0xFFFFFF,0.66}, {0.25,0xB8FFF2,0.66}, {1,0xB8FFF2,0} } end
+	if Clock_Face_Color == "green" then 	clock_face = { {0,0xB8FFF2,1}, {0.2,0x258574,0.75}, {1,0x154D43,0.8} } --base
+						clock_face2 = { {0,0xB8FFF2,0.8}, {1,0x000000,0} }			--inner
+						clock_face3 = { {0,0xFFFFFF,0.66}, {0.25,0xB8FFF2,0.66}, {1,0xB8FFF2,0} } end --top
 
 
 	if Clock_Face_Color == "pink" then 	clock_face = { {0,0xFFC1E5,1}, {0.2,0xCB5698,1}, {1,0xCB5698,0.66} }
 						clock_face2 = { {0,0x692D4F,1}, {1,0xFF6CBF,0} }
-						clock_face3 = { {0,0xFFFFFF,0.5}, {0.25,0xB8FFF2,0.66}, {1,0xB8FFF2,0} } end
+						clock_face3 = { {0,0xFFC1E5,1},{1,0xFFC1E5,0} } end
 
 	if t.colour == "custom" then t.colour = clock_face end
 	if t.colour == "custom2" then t.colour = clock_face2 end
