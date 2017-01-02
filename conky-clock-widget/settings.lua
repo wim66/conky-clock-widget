@@ -2,14 +2,14 @@
 -- Set the path to the scripts foder
 package.path = "./scripts/?.lua"
 
-Clock_Face_Color = "green" --options are pink/green
+Clock_Face_Color = "pink" --options are pink/green
 
 
 -- ##########################################################################
 
 
 
-require 'lua0-box'
+require 'clockface'
 require 'text'
 require 'clock'
 

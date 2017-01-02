@@ -103,7 +103,7 @@ Changelog:
   
 require 'cairo'
     
-function conky_main_box()
+function conky_main_box1()
 
     if conky_window==nil then return end
     
@@ -112,47 +112,21 @@ function conky_main_box()
 
 
 	{	draw_me=true,
-	x=18,y=18,w=316,h=310,
+	x=18,y=18,w=316,h=318,
 	colour= { {0,0x233240,0.85}},
 	corners={{"circle",90},{"circle",0},{"circle",0},{"circle",90}},
 	},
 
 	{	draw_me=true,
-	x=342,y=18,w=200,h=310,
+	x=342,y=18,w=200,h=318,
 	colour= { {0,0x233240,0.85}},
                 corners={{"circle",0},{"circle",90},{"circle",90},{"circle",0}},
 	},
 
 	{
-	x=10,y=10,w=540,h=326, colour= { {1,0x34495E,1} }, 
+	x=10,y=10,w=540,h=334, colour= { {1,0x34495E,1} }, 
         corners={ {"circle",100},}, border=4 
 	},
-
-
-		-- bottom glare, base color
-	{	draw_me=true,
-	x=350,y=36,w=184,h=184,
-		colour= "custom", radial_gradient= {92,210,25,92,190,188},
-        corners = { {"circle",92} },
-	},
-
-
-		-- inner radial
-	{	draw_me=true,
-	x=350,y=36,w=184,h=184,
-		colour= "custom2", radial_gradient= {92,92,10,92,92,92},
-        corners= { {"circle",92} },
-	},
-
-
-
-		-- top glare
-	{	draw_me=true,
-	x=384,y=38,w=116,h=116, 
-		colour= "custom3", linear_gradient= {62,0,62,124},
-        corners = { {"circle",62} },scale_y=0.5
-	},
-
 
     }
 

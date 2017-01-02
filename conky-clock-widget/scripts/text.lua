@@ -74,15 +74,12 @@ v1.3	25/06/2010  Add "reflection_alpha", "reflection_length", "reflection_scale"
 
 require 'cairo'
 
-function conky_draw_text()
-	--DEBUT DES PARAMETRES
-	--couleurs utilisées plusieurs fois placées dans des variables
-
-	local col0,col1,col2=0x00ffff,0x00ff00,0x0000ff -- 0xFFFFCC,0xCCFF99,0x99FF00
-	local colbg=0xffff00--99CCFF
+function conky_draw_text()	
 	if conky_window==nil then return end
 	local w=conky_window.width
 	local h=conky_window.height
+
+	---------------------- PARAMETERS BEGIN HERE
     text_settings={
 
 		{
@@ -97,7 +94,6 @@ function conky_draw_text()
 			reflection_alpha=0.9,
 			reflection_length=0.7,
 			colour={{0,0x3261b2,0.5},{0.5,0x47ffe0,0.8},{1,0x3261b2,0.5}},
-			--v_align="m",
 			radial={0,0,0,20,-150,190}
 		},
 
@@ -107,20 +103,18 @@ function conky_draw_text()
 			font_size=100,
 			h_align="c",
 			bold=false,
-			--italic=true
 			x=180,
 			y=120,
 			orientation="nn",
 			reflection_alpha=0.9,
 			reflection_length=0.7,			
 			colour={{0,0xb25032,0.5},{0.5,0xff7247,1},{1,0xb25032,0.5}},
-			--colour={{0,0xb25032,0.8},{0.5,0xff8661,1},{1,0xb25032,0.8}},
 			radial={0,0,0,20,-150,190}
 		},
 
         {
 		    text=conky_parse( "${execi 10000 lsb_release -d | cut -f 2}" ),
-		    x=448,y=250,
+		    x=448,y=260,
 		    h_align="c",
 		    font_name="GeosansLight",
 		    font_size=16,
@@ -131,7 +125,7 @@ function conky_draw_text()
 
         {
 		    text=conky_parse( "Kernel ${kernel}" ),
-		    x=448,y=270,
+		    x=448,y=280,
 		    h_align="c",
 		    font_name="GeosansLight",
 		    font_size=16,
@@ -142,7 +136,7 @@ function conky_draw_text()
 
         {
 		    text=conky_parse("Uptime ${uptime}"),
-		    x=448,y=290,
+		    x=448,y=300,
 		    h_align="c",
 		    font_name="GeosansLight",
 		    font_size=16,
@@ -154,8 +148,8 @@ function conky_draw_text()
   }
            
     
-    
---------------FIN DES PARAMETERES----------------
+    ---------------------------- PARAMETERS END HERE    
+
     if conky_window == nil then return end
 
     if tonumber(conky_parse("$updates"))<3 then return end
@@ -308,7 +302,7 @@ function display_text(t)
 		if dy<0 then dy=dy*(-1) end
 		cairo_rectangle(cr,mx+te.x_bearing,te.y_bearing+te.height+my,te.width+dy,-te.height*1.05)
 		cairo_clip_preserve(cr)
-		cairo_set_operator(cr,CAIRO_OPERATOR_DEST)
+		cairo_set_operator(cr,CAIRO_OPERATOR_CLEAR)
 		--cairo_stroke(cr)
 		cairo_mask(cr,pat2)
 		cairo_pattern_destroy(pat2)
