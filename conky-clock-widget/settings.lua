@@ -1,8 +1,8 @@
 
 -- Set the path to the scripts foder
-package.path = "/home/willem/git/conky-clock-widget/conky-clock-widget/scripts/?.lua"
+package.path = "./scripts/?.lua"
 
-
+Clock_Face_Color = "green" --options are pink/green
 
 
 -- ##########################################################################
