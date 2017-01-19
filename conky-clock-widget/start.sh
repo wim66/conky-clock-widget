@@ -1,7 +1,8 @@
 #!/bin/sh
 
-#sleep 30
+
 killall conky
+cd "$(dirname "$0")"
 sleep 1
 echo "\nstarting conky's\n"
 sleep 1
